@@ -1,0 +1,183 @@
+.nlist
+
+# keycode.mac version 2.0.0
+# RUKA assembler macro for X680x0/Human68k(v3) by TcbnErik
+#
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved.  This file is offered as-is,
+# without any warranty.
+
+
+.ifndef __keycode_mac__
+        __keycode_mac__:=1
+
+
+* Constant ------------------------------------ *
+
+;scan code
+KEY_ESC:        .equ $01
+KEY_1:          .equ $02
+KEY_！:         .equ $02
+KEY_2:          .equ $03
+KEY_”:         .equ $03
+KEY_3:          .equ $04
+KEY_＃:         .equ $04
+KEY_4:          .equ $05
+KEY_＄:         .equ $05
+KEY_5:          .equ $06
+KEY_％:         .equ $06
+KEY_6:          .equ $07
+KEY_＆:         .equ $07
+KEY_7:          .equ $08
+KEY_’:         .equ $08
+KEY_8:          .equ $09
+KEY_（:         .equ $09
+KEY_9:          .equ $0a
+KEY_）:         .equ $0a
+KEY_0:          .equ $0b
+KEY_－:         .equ $0c
+KEY_＝:         .equ $0c
+KEY_＾:         .equ $0d
+KEY_～:         .equ $0d
+KEY_＼:         .equ $0e
+KEY_｜:         .equ $0e
+KEY_BS:         .equ $0f
+
+KEY_TAB:        .equ $10
+KEY_Q:          .equ $11
+KEY_W:          .equ $12
+KEY_E:          .equ $13
+KEY_R:          .equ $14
+KEY_T:          .equ $15
+KEY_Y:          .equ $16
+KEY_U:          .equ $17
+KEY_I:          .equ $18
+KEY_O:          .equ $19
+KEY_P:          .equ $1a
+KEY_＠:         .equ $1b
+KEY_‘:         .equ $1b
+KEY_［:         .equ $1c
+KEY_｛:         .equ $1c
+KEY_CR:         .equ $1d
+KEY_A:          .equ $1e
+KEY_S:          .equ $1f
+
+KEY_D:          .equ $20
+KEY_F:          .equ $21
+KEY_G:          .equ $22
+KEY_H:          .equ $23
+KEY_J:          .equ $24
+KEY_K:          .equ $25
+KEY_L:          .equ $26
+KEY_；:         .equ $27
+KEY_＋:         .equ $27
+KEY_：:         .equ $28
+KEY_＊:         .equ $28
+KEY_］:         .equ $29
+KEY_｝:         .equ $29
+KEY_Z:          .equ $2a
+KEY_X:          .equ $2b
+KEY_C:          .equ $2c
+KEY_V:          .equ $2d
+KEY_B:          .equ $2e
+KEY_N:          .equ $2f
+
+KEY_M:          .equ $30
+KEY_，:         .equ $31
+KEY_＜:         .equ $31
+KEY_．:         .equ $32
+KEY_＞:         .equ $32
+KEY_／:         .equ $33
+KEY_？:         .equ $33
+KEY__:          .equ $34
+KEY_SPACE:      .equ $35
+KEY_HOME:       .equ $36
+KEY_DEL:        .equ $37
+KEY_R_UP:       .equ $38
+KEY_R_DOWN:     .equ $39
+KEY_UNDO:       .equ $3a
+KEY_←:         .equ $3b
+KEY_↑:         .equ $3c
+KEY_→:         .equ $3d
+KEY_↓:         .equ $3e
+KEY_CLR:        .equ $3f
+
+KEY_T／:        .equ $40
+KEY_T＊:        .equ $41
+KEY_T－:        .equ $42
+KEY_T7:         .equ $43
+KEY_T8:         .equ $44
+KEY_T9:         .equ $45
+KEY_T＋:        .equ $46
+KEY_T4:         .equ $47
+KEY_T5:         .equ $48
+KEY_T6:         .equ $49
+KEY_T＝:        .equ $4a
+KEY_T1:         .equ $4b
+KEY_T2:         .equ $4c
+KEY_T3:         .equ $4d
+KEY_ENTER:      .equ $4e
+KEY_T0:         .equ $4f
+
+KEY_T，:        .equ $50
+KEY_T．:        .equ $51
+KEY_記号:       .equ $52
+KEY_登録:       .equ $53
+KEY_HELP:       .equ $54
+KEY_XF1:        .equ $55
+KEY_XF2:        .equ $56
+KEY_XF3:        .equ $57
+KEY_XF4:        .equ $58
+KEY_XF5:        .equ $59
+KEY_かな:       .equ $5a
+KEY_ローマ:     .equ $5b
+KEY_コード:     .equ $5c
+KEY_CAPS:       .equ $5d
+KEY_INS:        .equ $5e
+KEY_ひら:       .equ $5f
+
+KEY_全角:       .equ $60
+KEY_BREAK:      .equ $61
+KEY_COPY:       .equ $62
+KEY_F0:         .equ $63
+KEY_F1:         .equ $64
+KEY_F2:         .equ $65
+KEY_F3:         .equ $66
+KEY_F4:         .equ $67
+KEY_F5:         .equ $68
+KEY_F6:         .equ $69
+KEY_F7:         .equ $6a
+KEY_F8:         .equ $6b
+KEY_F9:         .equ $6c
+
+KEY_SHIFT:      .equ $70
+KEY_CTRL:       .equ $71
+KEY_OPT_1:      .equ $72
+KEY_OPT_2:      .equ $73
+
+;LED bit position($810.b)
+LED_全角:   .equ 6
+LED_ひら:   .equ 5
+LED_INS:    .equ 4
+LED_CAPS:   .equ 3
+LED_コード: .equ 2
+LED_ローマ: .equ 1
+LED_かな:   .equ 0
+
+;shift key bit position($811.b)
+SFT_CAPS:   .equ 7
+SFT_コード: .equ 6
+SFT_ローマ: .equ 5
+SFT_かな:   .equ 4
+SFT_OPT2:   .equ 3
+SFT_OPT1:   .equ 2
+SFT_CTRL:   .equ 1
+SFT_SHIFT:  .equ 0
+
+
+* End of File --------------------------------- *
+
+.endif
+
+.list

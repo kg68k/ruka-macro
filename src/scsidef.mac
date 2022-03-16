@@ -1,0 +1,43 @@
+.nlist
+
+# scsidef.mac version 2.0.0
+# RUKA assembler macro for X680x0/Human68k(v3) by TcbnErik
+#
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
+# notice and this notice are preserved.  This file is offered as-is,
+# without any warranty.
+
+
+.ifndef __scsidef_mac__
+        __scsidef_mac__:=1
+
+.include scsicall.mac
+
+
+* Structure ----------------------------------- *
+
+.offset 0
+READCAP_BLOCK: .ds.l 1
+READCAP_SIZE:  .ds.l 1
+sizeof_READCAP:
+.fail $.ne.8
+
+.offset 0
+INQUIRY_UNIT: .ds.b 1
+INQUIRY_INFO: .ds.b 1
+INQUIRY_VER:  .ds.b 1
+              .ds.b 1
+INQUIRY_SIZE: .ds.b 1
+INQUIRY_BUFF:
+sizeof_INQUIRY:
+.fail $.ne.5
+
+.text
+
+
+* End of File --------------------------------- *
+
+.endif
+
+.list
