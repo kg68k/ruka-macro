@@ -1,6 +1,6 @@
 .nlist
 
-# iocsdef.mac version 2.0.0
+# iocsdef.mac version 2.0.1
 # RUKA assembler macro for X680x0/Human68k(v3) by TcbnErik
 #
 # Copying and distribution of this file, with or without modification,
@@ -42,10 +42,10 @@ sizeof_CLIP:
 .offset 0
 PATST_OFS_X:  .ds 1
 PATST_OFS_Y:  .ds 1
-PATST_SHADOW: .ds 1
-PATST_PAT:    .ds 1
+PATST_SHADOW: .ds 16
+PATST_PAT:    .ds 16
 sizeof_PATST:
-.fail $.ne.8
+.fail $.ne.68
 
 .offset 0
 GRBUF_XL:    .ds 1
@@ -53,7 +53,7 @@ GRBUF_YL:    .ds 1
 GRBUF_COLOR: .ds 1
 GRBUF_DATA:
 sizeof_GRBUF:
-.fail $.ne.12
+.fail $.ne.6
 
 .offset 0
 BITBUF_XL: .ds 1
