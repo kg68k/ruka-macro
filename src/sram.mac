@@ -1,7 +1,7 @@
 .nlist
 
-# sram.mac version 2.0.0
-# RUKA assembler macro for X680x0/Human68k(v3) by TcbnErik
+# sram.mac - RUKA assembler macro for X680x0/Human68k(v3) by TcbnErik
+# Last-modified: 2023-09-20
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -18,6 +18,10 @@
 SRAM:           .equ $ed0000
 SRAM_END:       .equ $ed3fff
 SRAM_SIZE:      .equ 16*1024
+
+SRAM_16KB_END:  .equ $ed4000
+SRAM_32KB_END:  .equ $ed8000
+SRAM_64KB_END:  .equ $ee0000
 
 SRAM_CHECKID:   .equ $ed0000
 SRAM_MEMSIZE:   .equ $ed0008
