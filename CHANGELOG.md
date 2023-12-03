@@ -1,9 +1,17 @@
 # 変更履歴
 
+## 3.2.0 (2023-12-04)
+
+* filesys.mac: `ASSIGNMD_*`を追加。
+* dosdef.mac: `EXECFILETYPE_*`、`EXECMODE_*`を追加。
+  * `EXEC_*`は将来削除する可能性あり。
+
+
 ## 3.1.0 (2023-11-26)
 
 * `#`コメントを`;`に変更。
 * filesys.mac: `sizeof_NAMESTS_*`、`sizeof_NAMECK_*`を追加。
+
 
 ## 3.0.0 (2023-09-20)
 
