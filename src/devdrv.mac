@@ -1,0 +1,216 @@
+.nlist
+
+;devdrv.mac - RUKA assembler macro for X680x0/Human68k(v3) by TcbnErik
+;Last-modified: 2024-02-07
+;
+;Copying and distribution of this file, with or without modification,
+;are permitted in any medium without royalty provided the copyright
+;notice and this notice are preserved.  This file is offered as-is,
+;without any warranty.
+
+
+.ifndef __devdrv_mac__
+        __devdrv_mac__:=1
+
+
+* Device Header ------------------------------- *
+
+.offset 0
+DEVHEAD_Next:      .ds.l 1
+DEVHEAD_Attribute:  ;.w
+DEVHEAD_AtrHigh:   .ds.b 1
+DEVHEAD_AtrLow:    .ds.b 1
+DEVHEAD_Strategy:  .ds.l 1
+DEVHEAD_Interrupt: .ds.l 1
+DEVHEAD_Name:      .ds.b 8
+sizeof_DEVHEAD:
+.fail $.ne.22
+.text
+
+* Device Attributes --------------------------- *
+
+DEVATR_CHAR:     .equ 15
+DEVATR_IOCTRL:   .equ 14
+DEVATR_REMOTEFS: .equ 13
+DEVATR_CHARFILE: .equ  7  ;only in fcb
+DEVATR_SPIOCTRL: .equ  6  ;only in device header
+DEVATR_UPDATE:   .equ  6  ;only in fcb
+DEVATR_REMOTE:   .equ  5  ;only in block device
+DEVATR_RAW:      .equ  5  ;only in character device
+DEVATR_CLOCK:    .equ  3
+DEVATR_NUL:      .equ  2
+DEVATR_STDOUT:   .equ  1
+DEVATR_STDIN:    .equ  0
+
+* Device Driver Command ----------------------- *
+
+DEVCMD_INIT:        .equ $00
+DEVCMD_EXGCHECK:    .equ $01
+DEVCMD_BUILDBPB:    .equ $02
+DEVCMD_IOCTRLIN:    .equ $03
+DEVCMD_READ:        .equ $04
+DEVCMD_DRIVECTRL:   .equ $05  ;for block device
+DEVCMD_INPUTSENSE:  .equ $05  ;for character device
+DEVCMD_INPUTCHECK:  .equ $06
+DEVCMD_FLUSH:       .equ $07
+DEVCMD_WRITE:       .equ $08
+DEVCMD_WRITEV:      .equ $09
+DEVCMD_OUTPUTCHECK: .equ $0a
+DEVCMD_IOCTRLOUT:   .equ $0c
+DEVCMD_SPIOCTRL:    .equ $13
+
+;remove device
+DEVCMD_REMOTE_INIT:      .equ $40
+DEVCMD_REMOTE_FINDDIR:   .equ $41
+DEVCMD_REMOTE_MKDIR:     .equ $42
+DEVCMD_REMOTE_RMDIR:     .equ $43
+DEVCMD_REMOTE_RENAME:    .equ $44
+DEVCMD_REMOTE_DELETE:    .equ $45
+DEVCMD_REMOTE_FINDFILE:  .equ $46
+DEVCMD_REMOTE_FILES:     .equ $47
+DEVCMD_REMOTE_NFILES:    .equ $48
+DEVCMD_REMOTE_CREATE:    .equ $49
+DEVCMD_REMOTE_OPEN:      .equ $4A
+DEVCMD_REMOTE_CLOSE:     .equ $4B
+DEVCMD_REMOTE_READ:      .equ $4C
+DEVCMD_REMOTE_WRITE:     .equ $4D
+DEVCMD_REMOTE_SEEK:      .equ $4E
+DEVCMD_REMOTE_FILEDATE:  .equ $4F
+DEVCMD_REMOTE_GETCAP:    .equ $50
+DEVCMD_REMOTE_DRIVECTRL: .equ $51
+DEVCMD_REMOTE_GETDPB:    .equ $52
+DEVCMD_REMOTE_IOREAD:    .equ $53
+DEVCMD_REMOTE_IOWRITE:   .equ $54
+DEVCMD_REMOTE_IOCTRL:    .equ $55
+DEVCMD_REMOTE_ABORT:     .equ $56
+DEVCMD_REMOTE_EXGCHECK:  .equ $57
+DEVCMD_REMOTE_ASKLOCK:   .equ $58
+
+DEVCMD_REMOTE_VERIFY_FLAG: .equ $80
+
+* Request Header ------------------------------ *
+
+REQHEAD_Magic0:        .equ $00  ;.b
+REQHEAD_UnitNo:        .equ $01  ;.b
+REQHEAD_Command:       .equ $02  ;.b
+REQHEAD_ErrorLow:      .equ $03  ;.b
+REQHEAD_ErrorHigh:     .equ $04  ;.b
+
+REQHEAD_SubCommand:    .equ $0d  ;.b in cmd$05,$51
+REQHEAD_MediaByte:     .equ $0d  ;.b in cmd$01,$02,$04,$53,$54
+REQHEAD_FileAttribute: .equ $0d  ;.b in cmd$46,$47,$49
+REQHEAD_SeekMode:      .equ $0d  ;.b in cmd$4e
+REQHEAD_LockMode:      .equ $0d  ;.b in cmd$58
+REQHEAD_UnitCount:     .equ $0d  ;.b out cmd$00,$40
+REQHEAD_DriveStatus:   .equ $0d  ;.b out cmd$05,$51
+
+REQHEAD_Buffer:        .equ $0e  ;.l in cmd$03,$04,$08,$09,$0c,$13,$4c,$4d,$50,$52,$53,$54,$55
+REQHEAD_Namests:       .equ $0e  ;.l in cmd$41,$42,$43,$45,$46,$47,$49,$4a
+REQHEAD_NamestsOld:    .equ $0e  ;.l in cmd$44
+REQHEAD_LockLength:    .equ $0e  ;.l in cmd$48
+REQHEAD_IsExchanged:   .equ $0e  ;.b out cmd$01
+REQHEAD_EndAddress:    .equ $0e  ;.l out cmd$00,$40
+
+REQHEAD_FCode:         .equ $12  ;.w in cmd$13,$55
+REQHEAD_Parameter:     .equ $12  ;.l in cmd$00,$40
+REQHEAD_Length:        .equ $12  ;.l in cmd$03,$04,$08,$09,$0c,$4c,$4d,$53,$54
+REQHEAD_NamestsNew:    .equ $12  ;.l in cmd$44
+REQHEAD_Files:         .equ $12  ;.l in cmd$47,$48
+REQHEAD_IsCreate:      .equ $12  ;.l in cmd$49
+REQHEAD_Offset:        .equ $12  ;.l in cmd$4e,$58
+REQHEAD_DateTime:      .equ $12  ;.l in cmd$4f
+REQHEAD_BpbTable:      .equ $12  ;.l out cmd$00,$02
+REQHEAD_Result:        .equ $12  ;.l out cmd$41...$58
+
+REQHEAD_DriveNo:       .equ $16  ;.b in cmd$00,$40
+REQHEAD_SectorNo:      .equ $16  ;.l in cmd$04,$08,$09,$53,$54
+REQHEAD_Fcb:           .equ $16  ;.l in cmd$49,$4a,$4b,$4c,$4d,$4e,$4f,$58
+REQHEAD_ClockCommand:  .equ $16  ;.l in CLOCK:cmd$04,$08,$09
+
+sizeof_REQHEAD: .equ 26
+
+* DEVCMD_DRIVECTRL Sub Command ---------------- *
+
+;DRVCTRL_CHECK:     .equ 0
+;DRVCTRL_EJECT:     .equ 1
+;DRVCTRL_EJIMPOSS1: .equ 2
+;DRVCTRL_EJPOSS1:   .equ 3
+;DRVCTRL_LEDON:     .equ 4
+;DRVCTRL_LEDOFF:    .equ 5
+;DRVCTRL_EJIMPOSS2: .equ 6
+;DRVCTRL_EJPOSS2:   .equ 7
+;DRVCTRL_EXGCHECK:  .equ 9
+
+* BIOS Parameter Block ------------------------ *
+
+.offset 0
+BPB_BytesPerSector:    .ds   1
+BPB_SectorsPerCluster: .ds.b 1
+BPB_FatCount:          .ds.b 1
+BPB_SectersBeforeFat:  .ds   1
+BPB_RootEntryCount:    .ds   1
+BPB_TotalSectors:      .ds   1
+BPB_MediaByte:         .ds.b 1
+BPB_SectorsPerFat:     .ds.b 1
+sizeof_BPB:
+.fail $.ne.12
+BPB_TotalSectorsLong:  .ds.l 1
+sizeof_LARGE_BPB:
+.fail $.ne.16
+
+;Human68k internal HARDDSK
+;.offset sizeof_BPB
+;BPBHD_Pda:       ;.b
+;BPBHD_TopSector: .ds.l   1
+;sizeof_BPBHD:
+;.fail $.ne.16
+
+;Human68k internal DISK2HD
+;.offset sizeof_BPB
+;BPBFD_SectorsPerTrack: .ds   1
+;BPBFD_Sides:           .ds   1
+;BPBFD_Pda:             .ds.b 1
+;BPBFD_Unknown:         .ds.b 1
+;sizeof_BPBFD:
+;.fail $.ne.18
+
+* Drive Parameter Block ----------------------- *
+
+.offset 0
+DPB_Drive:              .ds.b 1
+DPB_UnitNo:             .ds.b 1
+DPB_DeviceHeader:       .ds.l 1
+DPB_NextDpb:            .ds.l 1
+DPB_BytesPerSector:     .ds   1
+sizeof_REMOTE_DPB:
+.fail $.ne.12
+DPB_SectorsPerCluster:  .ds.b 1
+DPB_ClusterToSecShift:  .ds.b 1
+DPB_FatStartSector:     .ds   1
+DPB_FatCount:           .ds.b 1
+DPB_SectorsPerFat:      .ds.b 1
+DPB_RootEntryCount:     .ds   1
+DPB_DataStartSector:    .ds   1
+DPB_FatMax:             .ds   1
+DPB_RootDirStartSector: .ds   1
+DPB_MediaByte:          .ds.b 1
+DPB_SectorToBytesShift: .ds.b 1
+DPB_SearchFatPosition:  .ds   1
+DPB_DirschFree_DirFat:  .ds.l 1
+DPB_DirschFree_CluSec:  .ds   1
+DPB_DirschFree_Sector:  .ds.l 1
+DPB_DirschFree_Rest:    .ds   1
+DPB_DirschFind_DirFat:  .ds.l 1
+DPB_DirschFind_CluSec:  .ds   1
+DPB_DirschFind_Sector:  .ds.l 1
+DPB_DirschFind_Rest:    .ds   1
+DPB_DirschFind_Offset:  .ds   1
+sizeof_DPB:
+.fail $.ne.56
+
+
+* End of File --------------------------------- *
+
+.text
+.endif
+.list
