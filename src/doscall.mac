@@ -1,7 +1,7 @@
 .nlist
 
 ;doscall.mac - RUKA assembler macro for X680x0/Human68k(v3) by TcbnErik
-;Last-modified: 2024-02-07
+;Last-modified: 2024-02-08
 ;
 ;Copying and distribution of this file, with or without modification,
 ;are permitted in any medium without royalty provided the copyright
@@ -207,8 +207,8 @@ _BUS_ERR:       .equ    $fff7
 _OPEN_PR:       .equ    $fff8
 _KILL_PR:       .equ    $fff9
 _GET_PR:        .equ    $fffa
-_SUSPEND:       .equ    $fffb
-_SUSPEND_PR:    .equ    $fffb  ;for compatibility
+_SUSPEND_PR:    .equ    $fffb
+_SUSPEND:       .equ    $fffb  ;for compatibility
 _SLEEP_PR:      .equ    $fffc
 _SEND_PR:       .equ    $fffd
 _TIME_PR:       .equ    $fffe
