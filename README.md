@@ -39,7 +39,5 @@ without any warranty.
 
 
 ## Author
-
-TcbnErik / 立花@桑島技研
-
-
+TcbnErik / 立花@桑島技研  
+https://github.com/kg68k/ruka-macro

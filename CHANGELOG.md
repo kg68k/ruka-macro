@@ -1,5 +1,13 @@
 # 変更履歴
 
+## 3.3.0 (2024-07-31)
+
+* devdrv.mac: `REQHEAD_ReadData`、`DPBv1_*`、`CURDIR_*`、`MEDIABYTE_*`、`DIRENT_*`を追加。
+* dosdef.mac: `MB_*`は将来削除する可能性あり。
+* filesys.mac: `FILES_EX_*`を追加。
+  * `FILES_Path`は将来削除する可能性あり。
+
+
 ## 3.2.2 (2024-02-08)
 
 * doscall.mac: `_SUSPEND`ではなく`_SUSPEND_PR`が正式なシンボル名と解釈し、これを先頭に戻した。

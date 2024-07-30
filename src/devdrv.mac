@@ -1,7 +1,7 @@
 .nlist
 
 ;devdrv.mac - RUKA assembler macro for X680x0/Human68k(v3) by TcbnErik
-;Last-modified: 2024-02-07
+;Last-modified: 2024-07-31
 ;
 ;Copying and distribution of this file, with or without modification,
 ;are permitted in any medium without royalty provided the copyright
@@ -102,7 +102,8 @@ REQHEAD_FileAttribute: .equ $0d  ;.b in cmd$46,$47,$49
 REQHEAD_SeekMode:      .equ $0d  ;.b in cmd$4e
 REQHEAD_LockMode:      .equ $0d  ;.b in cmd$58
 REQHEAD_UnitCount:     .equ $0d  ;.b out cmd$00,$40
-REQHEAD_DriveStatus:   .equ $0d  ;.b out cmd$05,$51
+REQHEAD_DriveStatus:   .equ $0d  ;.b out block:cmd$05,$51
+REQHEAD_ReadData:      .equ $0d  ;.b out char:cmd$05
 
 REQHEAD_Buffer:        .equ $0e  ;.l in cmd$03,$04,$08,$09,$0c,$13,$4c,$4d,$50,$52,$53,$54,$55
 REQHEAD_Namests:       .equ $0e  ;.l in cmd$41,$42,$43,$45,$46,$47,$49,$4a
@@ -208,9 +209,93 @@ DPB_DirschFind_Offset:  .ds   1
 sizeof_DPB:
 .fail $.ne.56
 
+.offset 0
+DPBv1_Drive:              .ds.b 1
+DPBv1_UnitNo:             .ds.b 1
+DPBv1_BytesPerSector:     .ds   1
+DPBv1_SectorsPerCluster:  .ds.b 1
+DPBv1_ClusterToSecShift:  .ds.b 1
+DPBv1_FatStartSector:     .ds   1
+DPBv1_FatCount:           .ds.b 1
+DPBv1_SectorsPerFat:      .ds.b 1
+DPBv1_RootEntryCount:     .ds   1
+DPBv1_DataStartSector:    .ds   1
+DPBv1_FatMax:             .ds   1
+DPBv1_RootDirStartSector: .ds   1
+DPBv1_DeviceHeader:       .ds.l 1
+DPBv1_MediaByte:          .ds.b 1
+DPBv1_IsClean:            .ds.b 1
+DPBv1_NextDpb:            .ds.l 1
+DPBv1_CurDirFat           .ds   1
+DPBv1_CurDir:             .ds.b 64
+sizeof_DPBv1:
+.fail $.ne.94
 
-* End of File --------------------------------- *
+* Current Directory Table --------------------- *
+
+.offset 0
+CURDIR_Drive:  .ds.b 2
+CURDIR_Path:   .ds.b 64
+               .ds.w 1
+               .ds.b 1
+CURDIR_Assign: .ds.b 1
+CURDIR_Dpb:    .ds.l 1
+CURDIR_Fat:    .ds   1
+CURDIR_Length: .ds   1
+sizeof_CURDIR:
+.fail $.ne.78
+
+* Media Byte ---------------------------------- *
+
+MEDIABYTE_2DD10:   .equ $e0  ;9scdrv.x
+MEDIABYTE_1D9:     .equ $e5  ;
+MEDIABYTE_2D9:     .equ $e6  ;
+MEDIABYTE_1D8:     .equ $e7  ;
+MEDIABYTE_2D8:     .equ $e8  ;
+MEDIABYTE_2DQ16:   .equ $e9  ;
+MEDIABYTE_2HT:     .equ $ea  ;
+MEDIABYTE_2HS:     .equ $eb  ;
+MEDIABYTE_2HDE:    .equ $ec  ;
+MEDIABYTE_1DD9:    .equ $ee  ;
+MEDIABYTE_1DD8:    .equ $ef  ;
+MEDIABYTE_DMF:     .equ $f0  ;
+
+MEDIABYTE_WINDRV:  .equ $f3  ;windrv
+MEDIABYTE_DAT:     .equ $f4
+MEDIABYTE_NFS:     .equ $f4  ;nfs.x
+MEDIABYTE_CDROM:   .equ $f5
+MEDIABYTE_MO:      .equ $f6
+MEDIABYTE_HD:      .equ $f7
+MEDIABYTE_SASI:    .equ $f8
+MEDIABYTE_RAMDISK: .equ $f9
+MEDIABYTE_2HQ:     .equ $fa
+MEDIABYTE_2DD8:    .equ $fb
+MEDIABYTE_2DD9:    .equ $fc
+MEDIABYTE_2HC:     .equ $fd
+MEDIABYTE_2HD:     .equ $fe
+
+* Directory Entry ----------------------------- *
+
+sizeof_DIRENT_Name1: .equ 8
+sizeof_DIRENT_Ext:   .equ 3
+sizeof_DIRENT_Name2: .equ 10
+
+.offset 0
+DIRENT_Name1: .ds.b 8
+DIRENT_Ext:   .ds.b 3
+DIRENT_Atr:   .ds.b 1
+DIRENT_Name2: .ds.b 10
+DIRENT_Time:  .ds 1
+DIRENT_Date:  .ds 1
+DIRENT_Fat:   .ds 1
+DIRENT_Size:  .ds.l 1
+sizeof_DIRENT:
+.fail $.ne.32
+
 
 .text
 .endif
+
+* End of File --------------------------------- *
+
 .list
