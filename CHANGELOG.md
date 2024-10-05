@@ -1,5 +1,13 @@
 # 変更履歴
 
+## 4.0.0 (2024-10-06)
+
+* dosdef.mac, filesys.mac: 削除予定の機能はシンボル`__RUKA_ENABLE_OBSOLETE_MACRO__`を
+  定義したときのみ有効となるようにした。
+* fdef.mac: 新規作成。X-BASIC外部関数の定義。
+* macro.mac: `STRLEN`マクロに第三引数`offset`(長さの補正、-7～+9)を追加。
+
+
 ## 3.3.0 (2024-07-31)
 
 * devdrv.mac: `REQHEAD_ReadData`、`DPBv1_*`、`CURDIR_*`、`MEDIABYTE_*`、`DIRENT_*`を追加。
