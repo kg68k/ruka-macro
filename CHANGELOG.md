@@ -1,5 +1,12 @@
 # 変更履歴
 
+## 4.0.1 (2024-10-12)
+
+* macro.mac: マクロの引数に式を指定すると正しく展開されない不具合を修正。
+  * `STRCPY`、`STRCAT`マクロの`rewind`引数
+  * `STREND`、`STRLEN`マクロの`offset`引数
+
+
 ## 4.0.0 (2024-10-06)
 
 * dosdef.mac, filesys.mac: 削除予定の機能はシンボル`__RUKA_ENABLE_OBSOLETE_MACRO__`を
