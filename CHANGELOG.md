@@ -1,5 +1,10 @@
 # 変更履歴
 
+## 4.2.0 (2025-04-23)
+
+* graphicmask.mac: 新規作成。Graphic Maskのgm_internal.macと互換性がある。
+
+
 ## 4.1.0 (2025-01-20)
 
 * macro.mac: `STRLEN_CLOB`マクロを追加。アドレスレジスタを破壊するが速い。
