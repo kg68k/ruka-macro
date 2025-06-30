@@ -1,5 +1,11 @@
 # 変更履歴
 
+## 2025-07-01
+
+* process.mac: `PRCPTR_*`を追加。
+  * `BG_*`は将来削除予定。
+
+
 ## 4.2.0 (2025-04-23)
 
 * graphicmask.mac: 新規作成。Graphic Maskのgm_internal.macと互換性がある。
