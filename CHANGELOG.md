@@ -4,6 +4,7 @@
 
 * process.mac: `PRCPTR_*`を追加。
   * `BG_*`は将来削除予定。
+* sxcall.mac: 新規作成。SX-Windowファンクションコールの定義。
 
 
 ## 4.2.0 (2025-04-23)
