@@ -2,10 +2,11 @@
 
 ## 2025-07-22
 
+* dosdef.mac, files.mac: 削除予定に指定していた定義を削除。
+* dosdef.mac: `THREAD_*`、`PRCCTRL_*(大文字)`は将来削除予定。
 * process.mac: `PRCCTRL_*`、`PRCPTR_*`を追加。
   * `BG_*`は将来削除予定。
 * process.mac: `THREAD_*`をdosdef.macから移動。当面は両方のファイルで定義する。
-* dosdef.mac: `THREAD_*`、`PRCCTRL_*(大文字)`は将来削除予定。
 * sxcall.mac: 新規作成。SX-Windowファンクションコールの定義。
 * opmdrv.mac: 新規作成。OPMDRV\*.Xファンクションコールの定義。
 
