@@ -1,6 +1,6 @@
 # 変更履歴
 
-## 2025-07-22
+## 2025-07-24
 
 * dosdef.mac, files.mac: 削除予定に指定していた定義を削除。
 * dosdef.mac: `THREAD_*`、`PRCCTRL_*(大文字)`は将来削除予定。
@@ -9,6 +9,7 @@
 * process.mac: `THREAD_*`をdosdef.macから移動。当面は両方のファイルで定義する。
 * sxcall.mac: 新規作成。SX-Windowファンクションコールの定義。
 * opmdrv.mac: 新規作成。OPMDRV\*.Xファンクションコールの定義。
+* 対象OSのHuman68k(v3)から(v3)の表記を削除。
 
 
 ## 4.2.0 (2025-04-23)

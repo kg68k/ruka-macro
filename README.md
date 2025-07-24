@@ -1,7 +1,7 @@
-# RUKA assembler macro for X680x0/Human68k(v3)
+# RUKA assembler macro for X680x0/Human68k
 
 HAS060 用各種マクロファイルです。
-あんまり使ってないのでバグがあるかも知れません。
+ファイルによっては自分があまり使わないため、バグがあるかも知れません。
 
 
 ## Build
@@ -35,5 +35,4 @@ without any warranty.
 
 
 ## Author
-TcbnErik / 立花@桑島技研  
-https://github.com/kg68k/ruka-macro
+TcbnErik / https://github.com/kg68k/ruka-macro
