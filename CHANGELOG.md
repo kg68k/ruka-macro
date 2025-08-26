@@ -1,5 +1,10 @@
 # 変更履歴
 
+## 2025-08-27
+
+* iocswork.mac: `ROMCNT_U32`、`RAMCNT_U32`を追加。
+
+
 ## 4.3.0 (2025-07-24)
 
 * dosdef.mac, files.mac: 削除予定に指定していた定義を削除。
