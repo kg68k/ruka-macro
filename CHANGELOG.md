@@ -1,5 +1,10 @@
 # 変更履歴
 
+## 4.4.1 (2025-10-14)
+
+* opmdrvdef.mac: `O3_OPMREG_NOT_WITTEN`を`O3_OPMREG_NOT_WRITTEN`に修正。
+
+
 ## 4.4.0 (2025-10-03)
 
 * iocswork.mac: `ROMCNT_U32`、`RAMCNT_U32`を追加。
