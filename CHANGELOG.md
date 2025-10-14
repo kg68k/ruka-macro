@@ -1,5 +1,11 @@
 # 変更履歴
 
+## 2025-10-15
+
+* opmdrvdef.mac: `O[1-3]_TRACK_{MIN,MAX,COUNT}`を追加(OPMDRV2.Xのトラック数が違うため)。
+  OPMDRV\*.Xの種類を限定しない場合に安全に使える値として、`TRACK_{MIN,MAX,COUNT}`も残しておく。
+
+
 ## 4.4.1 (2025-10-14)
 
 * opmdrvdef.mac: `O3_OPMREG_NOT_WITTEN`を`O3_OPMREG_NOT_WRITTEN`に修正。
