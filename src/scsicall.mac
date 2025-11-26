@@ -1,7 +1,7 @@
 .nlist
 
 ;scsicall.mac - RUKA assembler macro for X680x0/Human68k by TcbnErik
-;Last-Modified: 2025-07-24
+;Last-Modified: 2025-11-27
 ;
 ;Copying and distribution of this file, with or without modification,
 ;are permitted in any medium without royalty provided the copyright
@@ -12,15 +12,13 @@
 .ifndef __scsicall_mac__
         __scsicall_mac__:=1
 
-.include iocscall.mac
-.nlist
-
 
 * Macro --------------------------------------- *
 
 SCSI: .macro callno
   moveq #callno,d1
-  IOCS _SCSIDRV
+  moveq #$f5,d0  ;_SCSIDRV
+  trap #15
 .endm
 
 

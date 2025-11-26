@@ -6,6 +6,7 @@
   * dosdef.mac: `PRCCTRL_*`、`THREAD_*`。
   * process.mac: `BG_*`。
 * rsdrv.mac: 新規作成。
+* scsicall.mac: iocscall.macを読み込まないようにした。
 
 
 ## 4.5.0 (2025-11-02)
