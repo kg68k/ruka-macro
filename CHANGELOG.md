@@ -1,8 +1,8 @@
 # 変更履歴
 
-## Unreleased
+## 5.0.0 (2025-11-27)
 
-* 削除予定だった定義を削除。
+* 削除予定となっていた定義を削除。
   * dosdef.mac: `PRCCTRL_*`、`THREAD_*`。
   * process.mac: `BG_*`。
 * rsdrv.mac: 新規作成。

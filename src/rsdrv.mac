@@ -15,8 +15,8 @@
 
 * Macro --------------------------------------- *
 
-ERS: .macro callname,auxno
-  move.l #(auxno<<8).or.callname,d2
+ERS: .macro callno,auxno
+  move.l #(auxno<<8).or.callno,d2
   moveq #$f1,d0  ;_RSDRV
   trap #15
 .endm
