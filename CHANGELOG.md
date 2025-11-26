@@ -1,5 +1,12 @@
 # 変更履歴
 
+## Unreleased
+
+* 削除予定だった定義を削除。
+  * dosdef.mac: `PRCCTRL_*`、`THREAD_*`。
+  * process.mac: `BG_*`。
+
+
 ## 4.5.0 (2025-11-02)
 
 * opmdrvdef.mac: `O[1-3]_TRACK_{MIN,MAX,COUNT}`を追加(OPMDRV2.Xのトラック数が違うため)。
