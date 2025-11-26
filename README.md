@@ -1,27 +1,67 @@
 # RUKA assembler macro for X680x0/Human68k
 
-HAS060 用各種マクロファイルです。
-ファイルによっては自分があまり使わないため、バグがあるかも知れません。
+HAS060.X用マクロファイル集です。  
+
+* 無保証です。
+* ファイルによっては自分があまり使わないため、不具合があるかも知れません。
+* しばしば仕様の変更が行われます。
+
+
+## ファイル内容
+
+* console.mac ... 制御文字
+* devdrv.mac ... デバイスドライバ
+* doscall.mac ... DOSコールマクロとDOSコール番号
+* dosdef.mac ... DOSコールの各種定義
+* fdef.mac ... X-BASICの外部関数
+* fefunc.mac ... FLOAT\*.X (FPACKマクロとFEFUNCコール番号)
+* filesys.mac ... ファイル操作DOSコールの各種定義
+* graphicmask.mac ... Graphic Mask
+* iocscall.mac ... IOCSコールマクロとIOCSコール番号
+* iocsdef.mac ... IOCSコールの各種定義
+* iocswork.mac ... IOCSワーク
+* iomap.mac ... メモリマップトI/O
+* keycode.mac ... IOCSのキースキャンコード
+* macro.mac ... 各種マクロ
+* opmdrv.mac ... OPMDRV\*.X (OPMマクロとOPMコール番号)
+* opmdrvdef.mac ... OPMコールの各種定義
+* process.mac ... プロセス操作DOSコールの各種定義
+* rsdrv.mac ... RSDRV.SYS (ERSマクロとERSコール番号)
+* scsicall.mac ... SCSI IOCSコール (SCSIマクロとSCSIコール番号)
+* scsidef.mac ... SCSI IOCSコールの各種定義
+* sram.mac ... SRAMメモリスイッチ
+* sxcall.mac ... SX-Window (SXマクロとSXコール番号)
+* vector.mac ... 例外ベクタ番号
 
 
 ## Build
-PC やネット上で扱いやすくするために、ソースファイルは UTF-8 で記述されています。
-X68000 上で使用する際には、UTF-8 から Shift_JIS への変換が必要です。
+
+PCやネット上での取り扱いを用意にするために、src/内のファイルはUTF-8で記述されています。
+X68000上で使用する際には、UTF-8からShift_JISへの変換が必要です。
+
+### src2buildを使用する場合
+
+必要ツール: [src2build](https://github.com/kg68k/src2build)
+
+srcディレクトリのある場所で以下のコマンドを実行します。
+```
+src2build src
+```
 
 ### u8tosj を使用する方法
 
-あらかじめ、[u8tosj](https://github.com/kg68k/u8tosj) をビルドしてインストールしておいてください。
+必要ツール: [u8tosj](https://github.com/kg68k/u8tosj)
 
-トップディレクトリで make を実行してください。以下の処理が行われます。
-1. build ディレクトリの作成。
-2. src/ 内の各ファイルを Shift_JIS に変換して build/ へ保存。
+srcディレクトリのある場所で以下のコマンドを実行します。
+```
+make
+```
 
-build/ 内の各ファイルを、インクルードファイル用のディレクトリにコピーしてください。
+build/内の各ファイルを、インクルードファイル用のディレクトリにコピーしてください。
 
+### その他の方法
 
-### u8tosj を使用しない方法
-
-ファイルを適当なツールで Shift_JIS に変換してください。
+src/内のファイルを適当なツールで適宜Shift_JISに変換してください。
 
 
 ## License
@@ -35,4 +75,5 @@ without any warranty.
 
 
 ## Author
+
 TcbnErik / https://github.com/kg68k/ruka-macro
