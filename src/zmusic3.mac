@@ -146,6 +146,8 @@ ZM_EXEC_ZMD:               .equ $7f
 
 * Constants ----------------------------------- *
 
+ZM3_TRAP3_VEC:      .equ $23
+
 ZM3_CHANNEL_MIN:    .equ 0
 ZM3_CHANNEL_MAX:    .equ 15
 ZM3_CHANNEL_COUNT:  .equ 16
