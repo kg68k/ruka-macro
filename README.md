@@ -32,6 +32,8 @@ HAS060.X用マクロファイル集です。
 * sram.mac ... SRAMメモリスイッチ
 * sxcall.mac ... SX-Window (SXマクロとSXコール番号)
 * vector.mac ... 例外ベクタ番号
+* zmusic2.mac ... Z-MUSIC v2
+* zmusic3.mac ... Z-MUSIC v3
 
 
 ## Build

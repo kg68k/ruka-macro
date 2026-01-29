@@ -1,5 +1,13 @@
 # 変更履歴
 
+## Unreleased
+
+* zmusic2.mac: 新規作成。ファンクションコール番号はzmusic3.macと併用できるように
+  `ZM2_...`形式で定義している。
+* zmusic3.mac: 新規作成。ファンクションコール番号はZ-MUSIC v3のソースコードのzmcall.mac
+  と同一の`ZM_...`形式で定義している。
+
+
 ## 5.0.1 (2025-12-13)
 
 * iocscall.mac: `_VDISPST`を`_TIMERAST`より前に移動(実際にはMFP Timer-Aを設定するので
