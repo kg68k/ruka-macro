@@ -1,5 +1,11 @@
 # 変更履歴
 
+## Unreleased 
+
+* zmusic2.mac: `ZM2_TIMER_MODE_*`を追加。
+* zmusic3.mac: `ZM3_TIMER_MODE_*`を追加。
+
+
 ## 5.1.0 (2026-03-25)
 
 * zmusic2.mac: 新規作成。ファンクションコール番号はzmusic3.macと併用できるように
