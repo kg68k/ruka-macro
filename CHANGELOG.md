@@ -4,6 +4,7 @@
 
 * zmusic2.mac: `ZM2_TIMER_MODE_*`を追加。
 * zmusic3.mac: `ZM3_TIMER_MODE_*`を追加。
+* iocscall.mac: `IOCS $f2`のシンボル名を`_A_JOY`に変更。`_A_JOYGET`は互換性のため残す。
 
 
 ## 5.1.0 (2026-03-25)
