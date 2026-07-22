@@ -249,6 +249,9 @@ _HIMEM:         .equ    $f8  ;himem.sys/ts16drv.x/060turbo.sys
 
 _TS6BGAG:       .equ    $f9  ;ts6bgag.x AGIOCS
 
+_ROMDB_CMD:     .equ    $fb  ;ROMDB command extension
+_ROMDB_ASM:     .equ    $fc  ;ROMDB assembler extension
+
 _ABORTRST:      .equ    $fd
 _IPLERR:        .equ    $fe
 _ABORTJOB:      .equ    $ff

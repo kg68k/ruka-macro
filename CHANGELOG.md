@@ -6,6 +6,9 @@
 * zmusic3.mac: `ZM3_TIMER_MODE_*`を追加。
 * iocscall.mac: `IOCS $f2`のシンボル名を`_A_JOY`に変更。`_A_JOYGET`は互換性のため残す。
 * iocscall.mac: `_TS6BGAS: .equ $fa`の定義を削除。
+* iocscall.mac: `_ROMDB_CMD`、`_ROMDB_ASM`の定義を追加。シンボル名はXEiJの
+  [misc/include/iocscall.mac](https://stdkmd.net/xeij/source/misc-include-iocscall.mac.htm)
+  に倣った。機能については https://x.com/kamadox/status/2063829184955429137 を参照。
 
 
 ## 5.1.0 (2026-03-25)
