@@ -9,6 +9,7 @@
 * iocscall.mac: `_ROMDB_CMD`、`_ROMDB_ASM`の定義を追加。シンボル名はXEiJの
   [misc/include/iocscall.mac](https://stdkmd.net/xeij/source/misc-include-iocscall.mac.htm)
   に倣った。機能については https://x.com/kamadox/status/2063829184955429137 を参照。
+* macro.mac: `CACHE_FLUSH`マクロを追加。
 
 
 ## 5.1.0 (2026-03-25)
