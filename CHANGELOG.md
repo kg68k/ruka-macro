@@ -1,6 +1,6 @@
 # 変更履歴
 
-## Unreleased
+## 5.2.0 (2026-10-04)
 
 * zmusic2.mac: `ZM2_TIMER_MODE_*`を追加。
 * zmusic3.mac: `ZM3_TIMER_MODE_*`を追加。
